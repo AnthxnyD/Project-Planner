@@ -1,4 +1,6 @@
-const card_data = [
+
+
+let card_data = [
     {
         name : "carglaz",
         description : "cezadaz zdazdad",
@@ -12,17 +14,42 @@ const card_data = [
         status : "1"
     }
 ]
+let dashboard = document.querySelector(".dashboard")
 
-console.log(card_data.push)
+generateCard()
+// let displayCard = card_data.map(function(){
+//         let card = document.createElement("div")
+//         card.classList.add("card")
+//         let dashboard = document.querySelector(".dashboard")
+//         dashboard.appendChild(card)
+// })
 
-let generateCard = card_data.map(function(){
-        let card = document.createElement("div")
-        card.classList.add("card")
-        let dashboard = document.querySelector(".dashboard")
-        dashboard.appendChild(card)
-})
+function generateCard(){
+    dashboard.innerHTML = ""
+    card_data.forEach((card) => {
+        let cardElem = document.createElement("div")
+        cardElem.classList.add("card")
+        cardElem.innerHTML = "check test " + card.name
+        
+        dashboard.appendChild(cardElem)
+    })
+}
+
 
 const addCard = document.querySelector(".addCard")
 addCard.addEventListener("click", function() {
-    card_data.push.call()
+    console.log("check")
+    card_data.push({name: "Joshua"})
+    generateCard()
+
 })
+
+// function displayCard (){
+//     console.log(e)
+//     let card = document.createElement("div")
+//     card.classList.add("card")
+//     card.textContent = ""
+//     let dashboard = document.querySelector(".dashboard")
+//     dashboard.appendChild(card)
+    
+// }

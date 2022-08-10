@@ -1,9 +1,28 @@
-const card_data = [1,2,3,4,5,6,7,8,9,10,11,12]
+const card_data = [
+    {
+        name : "carglaz",
+        description : "cezadaz zdazdad",
+        timer : "466",
+        status : "1"
+    },
+    {
+        name : "olvier",
+        description : "cezadaz zdazdad",
+        timer : "466",
+        status : "1"
+    }
+]
 
-for (let i = 0; i < card_data.length; i++) {
-    let card = document.createElement("div")
-    card.classList.add("card")
-    let dashboard = document.querySelector(".dashboard")
-    dashboard.appendChild(card)
-    
-}
+console.log(card_data.push)
+
+let generateCard = card_data.map(function(){
+        let card = document.createElement("div")
+        card.classList.add("card")
+        let dashboard = document.querySelector(".dashboard")
+        dashboard.appendChild(card)
+})
+
+const addCard = document.querySelector(".addCard")
+addCard.addEventListener("click", function() {
+    card_data.push.call()
+})

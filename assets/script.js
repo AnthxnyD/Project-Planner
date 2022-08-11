@@ -1,5 +1,3 @@
-
-
 let card_data = [
     {
         name : "carglaz",
@@ -17,12 +15,6 @@ let card_data = [
 let dashboard = document.querySelector(".dashboard")
 
 generateCard()
-// let displayCard = card_data.map(function(){
-//         let card = document.createElement("div")
-//         card.classList.add("card")
-//         let dashboard = document.querySelector(".dashboard")
-//         dashboard.appendChild(card)
-// })
 
 function generateCard(){
     dashboard.innerHTML = ""
@@ -35,15 +27,24 @@ function generateCard(){
     })
 }
 
-
 const addCard = document.querySelector(".addCard")
 addCard.addEventListener("click", function() {
     console.log("check")
     card_data.push({name: "Joshua"})
     generateCard()
-
 })
 
+
+
+
+
+
+// let displayCard = card_data.map(function(){
+//         let card = document.createElement("div")
+//         card.classList.add("card")
+//         let dashboard = document.querySelector(".dashboard")
+//         dashboard.appendChild(card)
+// })
 // function displayCard (){
 //     console.log(e)
 //     let card = document.createElement("div")

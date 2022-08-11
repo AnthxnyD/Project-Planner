@@ -29,11 +29,25 @@ body{
     align-items: center;
 }
 .checkbox{
-background-color: #B2C8DF;
-height: 250px;
+background-color: #FFE9AE;
+//height: 230px;
 width: 170px;
-border: solid;
-align-items: center;
+
+text-align: center;
+padding: 10px;
+button{
+    margin-top: 15px;
+
+}
+div{
+    margin-bottom: 5px;
+    margin-top: 4px;
+}
+input{
+
+width: 150px;
+
+}
 }
 .planner{
     display: flex;

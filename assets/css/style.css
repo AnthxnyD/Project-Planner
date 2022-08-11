@@ -32,11 +32,20 @@ body {
 }
 
 .checkbox {
-  background-color: #B2C8DF;
-  height: 250px;
+  background-color: #FFE9AE;
   width: 170px;
-  border: solid;
-  align-items: center;
+  text-align: center;
+  padding: 10px;
+}
+.checkbox button {
+  margin-top: 15px;
+}
+.checkbox div {
+  margin-bottom: 5px;
+  margin-top: 4px;
+}
+.checkbox input {
+  width: 150px;
 }
 
 .planner {

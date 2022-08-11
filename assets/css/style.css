@@ -1,3 +1,7 @@
+* {
+  font-family: "Comfortaa", cursive;
+}
+
 body {
   padding: 0;
   margin: 0;
@@ -6,7 +10,7 @@ body {
 .header {
   width: 100%;
   height: 15vh;
-  background-color: rgb(184, 217, 131);
+  background-color: #B2C8DF;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -19,7 +23,8 @@ body {
 .menu {
   width: 100%;
   height: 5vh;
-  background-color: black;
+  background-color: #C4D7E0;
+  border: solid #FFDBA4;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -33,11 +38,34 @@ body {
   flex-wrap: wrap;
   justify-content: space-around;
   align-items: center;
-  background-color: darkolivegreen;
+  background-color: #B2C8DF;
 }
 .dashboard .card {
   width: 200px;
   height: 200px;
-  border: solid;
-  background-color: rgb(255, 247, 130);
+  box-shadow: 1px 10px 5px -3px #6E85B7;
+  background-color: #FFE9AE;
+}
+
+.addCard {
+  background-color: #FFE9AE;
+  border-radius: 10px;
+  border: 8px double #FFE9AE;
+}
+
+.addCard:hover {
+  background-color: #FFDBA4;
+  border-radius: 10px;
+  border: 8px double #FFDBA4;
+}
+
+.nameFilter, .timeFilter, .statusFilter {
+  background-color: #B2C8DF;
+  border-radius: 10px;
+  border: 8px solid #B2C8DF;
+}
+
+.nameFilter:hover, .timeFilter:hover, .statusFilter:hover {
+  background-color: #6E85B7;
+  border: 8px solid #6E85B7;
 }/*# sourceMappingURL=style.css.map */

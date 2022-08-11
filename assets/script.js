@@ -53,4 +53,3 @@ addCard.addEventListener("click", function() {
 //     let dashboard = document.querySelector(".dashboard")
 //     dashboard.appendChild(card)
     
-// }

@@ -36,7 +36,7 @@ addCard.addEventListener("click", function() {
 })
 
 function displayCheckbox(){
-    let planner = document.querySelector(".planner") // Slection de l'element .planner
+    let planner = document.querySelector(".planner") // Selection de l'element .planner
     let checkbox = document.createElement("section") // Création de section
     let validation = document.createElement("button") // Création d'un button
     let inputName = document.createElement("input") // Création d'un input field
@@ -62,16 +62,30 @@ function displayCheckbox(){
     validation.addEventListener("click", function(){ // Ajoute au button un event on click
         let newName = inputName.value
         let newDescription = inputDescription.value
-        let newDate = inputDate.value
+        let newDate = inputDate.valueAsNumber
+
+        //let dt = newDate();
+        let actualDate = new Date().getTime();
+        //dt.setDate( dt.getDate() - actualDate.getDate() );
+        //console.log( dt );
+        console.log( newDate );
+        let resultInJ = Math.floor((newDate - actualDate)/86400000);
+        console.log(actualDate);
+        console.log(resultInJ);
+
         card_data.push({
             name: newName,
             description: newDescription,
-            timer: newDate
+            timer: resultInJ + " Jours Restants"
         }) // Insère dans l'array un nouvelle objet
         generateCard() // lance la fonction generate card
         console.log(newDate)
         planner.removeChild(checkbox) // supprime l'enfant checkbox
 })
+
+
+
+
 
 planner.insertBefore(checkbox , dashboard) // Ajoute dans le dom l'elem checkbox
 checkbox.appendChild(name)

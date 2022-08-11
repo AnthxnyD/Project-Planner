@@ -14,7 +14,7 @@ let card_data = [
 ]
 let dashboard = document.querySelector(".dashboard")
 
-generateCard()
+generateCard() 
 
 function generateCard(){
     dashboard.innerHTML = ""
@@ -31,10 +31,19 @@ const addCard = document.querySelector(".addCard")
 addCard.addEventListener("click", function() {
     console.log("check")
     card_data.push({name: "Joshua"})
-    generateCard()
+    displayCheckbox()
+    
+
 })
 
-
+function displayCheckbox(){
+let planner = document.querySelector(".planner")
+let checkbox = document.createElement("section")
+checkbox.classList.add("checkbox")
+checkbox.innerHTML="Hello World"
+planner.appendChild(checkbox)
+generateCard()
+}
 
 
 

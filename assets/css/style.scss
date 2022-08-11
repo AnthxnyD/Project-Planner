@@ -4,6 +4,7 @@
 body{
     padding: 0;
     margin: 0;
+    z-index: 0;
 }
 .header{
     width: 100%;
@@ -27,6 +28,14 @@ body{
     justify-content: space-around;
     align-items: center;
 }
+.checkbox{
+
+height: 250px;
+width: 150px;
+border: solid;
+z-index: 1;
+}
+
 
 .dashboard{
     width: 100%;
@@ -43,6 +52,7 @@ body{
         background-color: #FFE9AE;
     }
 }
+
 .addCard{
     background-color: #FFE9AE;
     border-radius: 10px;

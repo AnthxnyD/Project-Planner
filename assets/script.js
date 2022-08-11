@@ -30,25 +30,34 @@ function generateCard(){
 const addCard = document.querySelector(".addCard")
 addCard.addEventListener("click", function() {
     console.log("check")
-    card_data.push({name: "Joshua"})
-    //displayCheckbox()
-    generateCard()
+    //card_data.push({name: "Joshua"})
+    displayCheckbox()
+    
 
 })
 
 function displayCheckbox(){
 let planner = document.querySelector(".planner")
 let checkbox = document.createElement("section")
-let validation =document.createElement("button")
+let validation = document.createElement("button")
+let inputName = document.createElement("input")
+let test = inputName.innerHTML
 
 checkbox.classList.add("checkbox")
 checkbox.innerHTML="Your name : "
+inputName.setAttribute("type","text")
+
+card_data.push({name: inputName.innerText})
+
+checkbox.appendChild(inputName)
+
+validation.innerHTML = "valider"
 checkbox.appendChild(validation)
 
 planner.insertBefore(checkbox , dashboard)
 validation.addEventListener("click", function(){
-    
-
+    generateCard()    
+    planner.removeChild(checkbox)
 })
 
 }

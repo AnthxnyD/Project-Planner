@@ -31,20 +31,27 @@ const addCard = document.querySelector(".addCard")
 addCard.addEventListener("click", function() {
     console.log("check")
     card_data.push({name: "Joshua"})
-    displayCheckbox()
-    
+    //displayCheckbox()
+    generateCard()
 
 })
 
 function displayCheckbox(){
 let planner = document.querySelector(".planner")
 let checkbox = document.createElement("section")
-checkbox.classList.add("checkbox")
-checkbox.innerHTML="Hello World"
-planner.appendChild(checkbox)
-generateCard()
-}
+let validation =document.createElement("button")
 
+checkbox.classList.add("checkbox")
+checkbox.innerHTML="Your name : "
+checkbox.appendChild(validation)
+
+planner.insertBefore(checkbox , dashboard)
+validation.addEventListener("click", function(){
+    
+
+})
+
+}
 
 
 

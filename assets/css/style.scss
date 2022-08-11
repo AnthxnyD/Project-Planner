@@ -4,7 +4,7 @@
 body{
     padding: 0;
     margin: 0;
-    z-index: 0;
+    background-color: #B2C8DF;
 }
 .header{
     width: 100%;
@@ -29,11 +29,18 @@ body{
     align-items: center;
 }
 .checkbox{
-
+background-color: #B2C8DF;
 height: 250px;
-width: 150px;
+width: 100px;
 border: solid;
-z-index: 1;
+
+}
+.planner{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
 }
 
 

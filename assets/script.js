@@ -1,7 +1,7 @@
 let card_data = [
 ]
 let dashboard = document.querySelector(".dashboard")
-
+let isCardShow = false;
 generateCard() 
 
 function generateCard(){
@@ -11,13 +11,14 @@ function generateCard(){
         let cardName = document.createElement("h2")
         let cardDescription = document.createElement("p")
         let cardDate = document.createElement("p")
+        let cardSelect = document.createElement("select")
 
         cardElem.classList.add("card")
         // cardElem.innerHTML = "Titre " + card.name
         cardName.innerHTML = card.name
         cardDescription.innerHTML = card.description
         cardDate.innerHTML = card.timer
-
+        cardSelect.setAttribute("id", "cardSelect")
 
         dashboard.appendChild(cardElem)
         cardElem.appendChild(cardName)
@@ -29,20 +30,24 @@ function generateCard(){
 const addCard = document.querySelector(".addCard")
 addCard.addEventListener("click", function() {
     console.log("check")
+
     //card_data.push({name: "Joshua"})
     displayCheckbox()
-    
-
 })
 
 function displayCheckbox(){
+    if (isCardShow) {
+        return
+    }
+    isCardShow = true
     let planner = document.querySelector(".planner") // Slection de l'element .planner
     let checkbox = document.createElement("section") // Création de section
     let validation = document.createElement("button") // Création d'un button
     let inputName = document.createElement("input") // Création d'un input field
     let inputDescription = document.createElement("input")
     let inputDate = document.createElement("input")
-    
+
+
     const name = document.createElement("div")
     name.innerHTML = "Name :"
     const description = document.createElement("div")
@@ -50,9 +55,6 @@ function displayCheckbox(){
     const date = document.createElement("div")
     date.innerHTML = "Date d'échéance :"
     
-
-
-
     checkbox.classList.add("checkbox") // Ajoute a checkbox
     inputName.setAttribute("type","text") // Ajoute un attribut type a l'input field
     inputDescription.setAttribute("type","text")
@@ -71,6 +73,7 @@ function displayCheckbox(){
         generateCard() // lance la fonction generate card
         console.log(newDate)
         planner.removeChild(checkbox) // supprime l'enfant checkbox
+        isCardShow = false
 })
 
 planner.insertBefore(checkbox , dashboard) // Ajoute dans le dom l'elem checkbox
@@ -81,6 +84,4 @@ checkbox.appendChild(inputDescription)
 checkbox.appendChild(date)
 checkbox.appendChild(inputDate)
 checkbox.appendChild(validation) // Ajoute dans le dom l'elem validation
-
 }
-

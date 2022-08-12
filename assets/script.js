@@ -7,7 +7,6 @@ let isCardShow = false;
 generateCard() 
 
 function generateCard(){
-
     dashboard.innerHTML = ""
     card_data.forEach((card) => {
         let cardElem = document.createElement("div")
@@ -22,10 +21,10 @@ function generateCard(){
         cardDescription.innerHTML = card.description
         cardDate.innerHTML = card.timer
         cardSelect.setAttribute("id", "cardSelect")
-        for (let i = 0; i < status.length; i++) {
+        for (let i = 0; i < card.state.length; i++) {
             let optionStatus = document.createElement("option") 
-            optionStatus.value = status[i]
-            optionStatus.text = status[i]
+            optionStatus.value = card.state[i]
+            optionStatus.text =  card.state[i]
             cardSelect.appendChild(optionStatus)      
         }
 
@@ -42,6 +41,7 @@ const addCard = document.querySelector(".addCard")
 addCard.addEventListener("click", displayCheckbox)
 
 function displayCheckbox(){
+
     if (isCardShow) {
         return
     }
@@ -53,6 +53,7 @@ function displayCheckbox(){
     let inputName = document.createElement("input") // Création d'un input field
     let inputDescription = document.createElement("input")
     let inputDate = document.createElement("input")
+
     
 
     const name = document.createElement("div")
@@ -82,6 +83,7 @@ function displayCheckbox(){
             state: ["to do", "doing", "done"]
         }) // Insère dans l'array un nouvelle objet
         console.log(card_data)
+        
         generateCard() // lance la fonction generate card
         planner.removeChild(checkbox) // supprime l'enfant checkbox
         isCardShow = false
@@ -95,5 +97,6 @@ checkbox.appendChild(inputDescription)
 checkbox.appendChild(date)
 checkbox.appendChild(inputDate)
 checkbox.appendChild(validation) // Ajoute dans le dom l'elem validation
+
 }
 

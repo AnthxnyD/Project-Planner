@@ -83,7 +83,7 @@ function displayCheckbox(){
             state: ["to do", "doing", "done"]
         }) // Insère dans l'array un nouvelle objet
         console.log(card_data)
-        
+        console.log(card_data[0])
         generateCard() // lance la fonction generate card
         planner.removeChild(checkbox) // supprime l'enfant checkbox
         isCardShow = false
@@ -99,4 +99,11 @@ checkbox.appendChild(inputDate)
 checkbox.appendChild(validation) // Ajoute dans le dom l'elem validation
 
 }
+let timeFilter = document.querySelector(".timeFilter")
+timeFilter.addEventListener("click", function(){
 
+   
+
+
+
+})

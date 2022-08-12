@@ -14,7 +14,7 @@
 ## Bonus :
 -  Save tasks in LocalStorage, so that they persist even when the page is refreshed.
 
-### Link for my calculator project!
+### Link for my Project-Planner !
 
 
-[Go Calculator](https://anthxnyd.github.io/Project-Planner/)
+[Go Visit](https://anthxnyd.github.io/Project-Planner/)

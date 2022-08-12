@@ -103,8 +103,8 @@ let nameFilter = document.querySelector(".nameFilter")
 nameFilter.addEventListener("click", function () {
 
     dashboard.innerHTML = ""
-    console.log(card_data.sort((a, b) => a.name.localeCompare(b.name)))
-    let arrayName = card_data.sort(({ name: a }, { name: b }) => a - b)
+    //console.log(card_data.sort((a, b) => a.name.localeCompare(b.name)))
+    let arrayName = card_data.sort((a, b) => a.name.localeCompare(b.name))
 
     card_data = arrayName
     console.log(arrayName)

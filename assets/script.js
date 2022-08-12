@@ -99,22 +99,20 @@ function displayCheckbox() {
     checkbox.appendChild(validation) // Ajoute dans le dom l'elem validation
 }
 //NAME FILTER
-// let nameFilter = document.querySelector(".nameFilter")
-// nameFilter.addEventListener("click", function () {
+let nameFilter = document.querySelector(".nameFilter")
+nameFilter.addEventListener("click", function () {
 
-//     dashboard.innerHTML = ""
-//     let arrayName = card_data.sort(({ name: a }, { name: b }) => a - b)
+    dashboard.innerHTML = ""
+    console.log(card_data.sort((a, b) => a.name.localeCompare(b.name)))
+    let arrayName = card_data.sort(({ name: a }, { name: b }) => a - b)
 
-//     card_data = arrayName
-//     console.log(arrayName)
-//     generateCard()
+    card_data = arrayName
+    console.log(arrayName)
+    generateCard()
 
-// })
-// function SortArray(x, y){
-//     if (x.name < y.name) {return -1}
-//     if (x.name < y.name) {return 1}
-//     return 0
-// }
+})
+
+
 
 
 // TIME FILTER
@@ -125,4 +123,16 @@ timeFilter.addEventListener("click", function () {
     card_data = arrayTime
     generateCard()
 })
+//Status FILTER
+
+let statusFilter = document.querySelector(".statusFilter")
+statusFilter.addEventListener("click", function () {
+    dashboard.innerHTML = ""
+    let arrayStatus = card_data.sort()
+    card_data = arrayStatus
+    generateCard()
+
+})
+
+
 

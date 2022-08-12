@@ -1,10 +1,13 @@
 let card_data = [
 ]
+const status = ["to do", "doing", "done"]
+
 let dashboard = document.querySelector(".dashboard")
 let isCardShow = false;
 generateCard() 
 
 function generateCard(){
+
     dashboard.innerHTML = ""
     card_data.forEach((card) => {
         let cardElem = document.createElement("div")
@@ -19,27 +22,26 @@ function generateCard(){
         cardDescription.innerHTML = card.description
         cardDate.innerHTML = card.timer
         cardSelect.setAttribute("id", "cardSelect")
+        for (let i = 0; i < status.length; i++) {
+            let optionStatus = document.createElement("option") 
+            optionStatus.value = status[i]
+            optionStatus.text = status[i]
+            cardSelect.appendChild(optionStatus)      
+        }
 
         dashboard.appendChild(cardElem)
         cardElem.appendChild(cardName)
         cardElem.appendChild(cardDescription)
         cardElem.appendChild(cardDate)
+        cardElem.appendChild(cardSelect)
+        console.log(card_data)
     })
 }
 
 const addCard = document.querySelector(".addCard")
-addCard.addEventListener("click", function() {
-    console.log("check")
-    //card_data.push({name: "Joshua"})
-    displayCheckbox()
-    
-
-})
+addCard.addEventListener("click", displayCheckbox)
 
 function displayCheckbox(){
-
-
-
     if (isCardShow) {
         return
     }
@@ -70,21 +72,16 @@ function displayCheckbox(){
         let newName = inputName.value
         let newDescription = inputDescription.value
         let newDate = inputDate.valueAsNumber
-
-        //let dt = newDate();
         let actualDate = new Date().getTime();
-        //dt.setDate( dt.getDate() - actualDate.getDate() );
-        //console.log( dt );
-        console.log( newDate );
         let resultInJ = Math.floor((newDate - actualDate)/86400000);
-        console.log(actualDate);
-        console.log(resultInJ);
 
         card_data.push({
             name: newName,
             description: newDescription,
-            timer: resultInJ + " Jours Restants"
+            timer: resultInJ + " Jours Restants",
+            state: ["to do", "doing", "done"]
         }) // Insère dans l'array un nouvelle objet
+        console.log(card_data)
         generateCard() // lance la fonction generate card
         planner.removeChild(checkbox) // supprime l'enfant checkbox
         isCardShow = false
@@ -98,6 +95,5 @@ checkbox.appendChild(inputDescription)
 checkbox.appendChild(date)
 checkbox.appendChild(inputDate)
 checkbox.appendChild(validation) // Ajoute dans le dom l'elem validation
-
 }
 

@@ -1,12 +1,12 @@
 let card_data = [
 ]
+let dateArray = []
 const status = ["to do", "doing", "done"]
-
 let dashboard = document.querySelector(".dashboard")
 let isCardShow = false;
-generateCard() 
+generateCard()
 
-function generateCard(){
+function generateCard() {
     dashboard.innerHTML = ""
     card_data.forEach((card) => {
         let cardElem = document.createElement("div")
@@ -22,25 +22,26 @@ function generateCard(){
         cardDate.innerHTML = card.timer
         cardSelect.setAttribute("id", "cardSelect")
         for (let i = 0; i < card.state.length; i++) {
-            let optionStatus = document.createElement("option") 
+            let optionStatus = document.createElement("option")
             optionStatus.value = card.state[i]
-            optionStatus.text =  card.state[i]
-            cardSelect.appendChild(optionStatus)      
+            optionStatus.text = card.state[i]
+            cardSelect.appendChild(optionStatus)
         }
+        let timerArray = card.timer
+
 
         dashboard.appendChild(cardElem)
         cardElem.appendChild(cardName)
         cardElem.appendChild(cardDescription)
         cardElem.appendChild(cardDate)
         cardElem.appendChild(cardSelect)
-        console.log(card_data)
     })
 }
 
 const addCard = document.querySelector(".addCard")
 addCard.addEventListener("click", displayCheckbox)
 
-function displayCheckbox(){
+function displayCheckbox() {
 
     if (isCardShow) {
         return
@@ -54,7 +55,7 @@ function displayCheckbox(){
     let inputDescription = document.createElement("input")
     let inputDate = document.createElement("input")
 
-    
+
 
     const name = document.createElement("div")
     name.innerHTML = "Name :"
@@ -62,48 +63,66 @@ function displayCheckbox(){
     description.innerHTML = "Description :"
     const date = document.createElement("div")
     date.innerHTML = "Date d'échéance :"
-    
+
     checkbox.classList.add("checkbox") // Ajoute a checkbox
-    inputName.setAttribute("type","text") // Ajoute un attribut type a l'input field
-    inputDescription.setAttribute("type","text")
+    inputName.setAttribute("type", "text") // Ajoute un attribut type a l'input field
+    inputDescription.setAttribute("type", "text")
     inputDate.setAttribute("type", "date")
     validation.innerHTML = "valider" // Ajouter du texte au button
 
-    validation.addEventListener("click", function(){ // Ajoute au button un event on click
+    validation.addEventListener("click", function () { // Ajoute au button un event on click
         let newName = inputName.value
         let newDescription = inputDescription.value
         let newDate = inputDate.valueAsNumber
         let actualDate = new Date().getTime();
-        let resultInJ = Math.floor((newDate - actualDate)/86400000);
-
+        let resultInJ = Math.floor((newDate - actualDate) / 86400000);
+        dateArray.push(resultInJ)
         card_data.push({
             name: newName,
             description: newDescription,
-            timer: resultInJ + " Jours Restants",
+            timer: resultInJ,
             state: ["to do", "doing", "done"]
         }) // Insère dans l'array un nouvelle objet
-        console.log(card_data)
-        console.log(card_data[0])
         generateCard() // lance la fonction generate card
         planner.removeChild(checkbox) // supprime l'enfant checkbox
+        console.log(dateArray)
         isCardShow = false
-})
+    })
 
-planner.insertBefore(checkbox , dashboard) // Ajoute dans le dom l'elem checkbox
-checkbox.appendChild(name)
-checkbox.appendChild(inputName) // Ajoute dans le dom l'elem inputName
-checkbox.appendChild(description)
-checkbox.appendChild(inputDescription)
-checkbox.appendChild(date)
-checkbox.appendChild(inputDate)
-checkbox.appendChild(validation) // Ajoute dans le dom l'elem validation
-
+    planner.insertBefore(checkbox, dashboard) // Ajoute dans le dom l'elem checkbox
+    checkbox.appendChild(name)
+    checkbox.appendChild(inputName) // Ajoute dans le dom l'elem inputName
+    checkbox.appendChild(description)
+    checkbox.appendChild(inputDescription)
+    checkbox.appendChild(date)
+    checkbox.appendChild(inputDate)
+    checkbox.appendChild(validation) // Ajoute dans le dom l'elem validation
 }
+//NAME FILTER
+// let nameFilter = document.querySelector(".nameFilter")
+// nameFilter.addEventListener("click", function () {
+
+//     dashboard.innerHTML = ""
+//     let arrayName = card_data.sort(({ name: a }, { name: b }) => a - b)
+
+//     card_data = arrayName
+//     console.log(arrayName)
+//     generateCard()
+
+// })
+// function SortArray(x, y){
+//     if (x.name < y.name) {return -1}
+//     if (x.name < y.name) {return 1}
+//     return 0
+// }
+
+
+// TIME FILTER
 let timeFilter = document.querySelector(".timeFilter")
-timeFilter.addEventListener("click", function(){
-
-   
-
-
-
+timeFilter.addEventListener("click", function () {
+    dashboard.innerHTML = ""
+    let arrayTime = card_data.sort(({ timer: a }, { timer: b }) => a - b)
+    card_data = arrayTime
+    generateCard()
 })
+

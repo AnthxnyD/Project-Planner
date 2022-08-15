@@ -11,9 +11,14 @@ function generateCard() {
     card_data.forEach((card) => {
         let cardElem = document.createElement("div")
         let cardName = document.createElement("h2")
+        cardName.classList.add("Entry")
         let cardDescription = document.createElement("p")
+        cardDescription.classList.add("Entry")
         let cardDate = document.createElement("p")
+        cardDate.classList.add("Entry")
         let cardSelect = document.createElement("select")
+        cardSelect.classList.add("Entry")
+
 
         cardElem.classList.add("card")
         // cardElem.innerHTML = "Titre " + card.name

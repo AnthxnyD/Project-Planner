@@ -18,13 +18,16 @@ function generateCard() {
         cardElem.classList.add("card")
         // cardElem.innerHTML = "Titre " + card.name
         cardName.innerHTML = card.name
-        cardDescription.innerHTML = card.description
-        cardDate.innerHTML = card.timer
-        cardSelect.setAttribute("id", "cardSelect")
-        for (let i = 0; i < card.state.length; i++) {
+        cardDescription.innerHTML = card.description;
+        cardDate.innerHTML = card.timer;
+        cardSelect.setAttribute("id", "cardSelect");
+        cardSelect.value= status[card.state];
+        cardSelect.classList.add("cardSelect");
+        cardSelect.setAttribute('data-id',card.id );
+        for (let i = 0; i < status.length; i++) {
             let optionStatus = document.createElement("option")
-            optionStatus.value = card.state[i]
-            optionStatus.text = card.state[i]
+            optionStatus.value = i
+            optionStatus.text = status[i]
             cardSelect.appendChild(optionStatus)
         }
         let timerArray = card.timer
@@ -81,11 +84,25 @@ function displayCheckbox() {
             name: newName,
             description: newDescription,
             timer: resultInJ,
-            state: ["to do", "doing", "done"]
+            state: 0,
+            id: Date.now()
         }) // Insère dans l'array un nouvelle objet
         generateCard() // lance la fonction generate card
+        //Class cardSelect a ajouté aux element select
+const cardSelect = document.querySelectorAll('.cardSelect');
+
+[...cardSelect].map(select => {
+        addEventListener('change', () => {
+        //ID a ajouté dans l'array lors de sa creation
+        // datast a créer
+        const id = select.dataset.id;
+        console.log(id);
+        const index = retrieveIndex(card_data, id);
+        card_data[index].state = select.value;
+
+    })
+})
         planner.removeChild(checkbox) // supprime l'enfant checkbox
-        console.log(dateArray)
         isCardShow = false
     })
 
@@ -105,9 +122,7 @@ nameFilter.addEventListener("click", function () {
     dashboard.innerHTML = ""
     //console.log(card_data.sort((a, b) => a.name.localeCompare(b.name)))
     let arrayName = card_data.sort((a, b) => a.name.localeCompare(b.name))
-
     card_data = arrayName
-    console.log(arrayName)
     generateCard()
 
 })
@@ -128,11 +143,11 @@ timeFilter.addEventListener("click", function () {
 let statusFilter = document.querySelector(".statusFilter")
 statusFilter.addEventListener("click", function () {
     dashboard.innerHTML = ""
-    let arrayStatus = card_data.sort()
+    let arrayStatus = card_data.sort((a, b) => a.state - b.state)
     card_data = arrayStatus
     generateCard()
-
 })
 
-
-
+function retrieveIndex(table, id){
+    return table.findIndex(el => el.id == id);
+}
